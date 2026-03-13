@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     stages {
-        stage('Install dependencies') {
+        stage('Install & build ') {
             agent {
                 docker{
                     image 'node:25.8.1-alpine'
@@ -10,14 +10,13 @@ pipeline {
                 }
             }
             steps {
-                sh 'npm ci'
+                sh '''
+                    npm ci
+                    npm run build
+                '''
             }
         }
-        stage('Test') {
-            steps {
-                echo 'Testing..'
-            }
-        }
+
         stage('Deploy') {
             steps {
                 echo 'Deploying test....'
