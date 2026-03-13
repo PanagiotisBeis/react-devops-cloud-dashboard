@@ -36,8 +36,8 @@ pipeline {
                 }
             }
             steps {
-                sh 'yum install docker -y'
-                sh 'it works'
+                sh " 'docker --version'"
+                echo 'it works'
             }
         }
     }
