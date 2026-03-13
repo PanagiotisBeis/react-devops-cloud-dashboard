@@ -34,6 +34,7 @@ pipeline {
                     image 'amazon/aws-cli'
                     reuseNode true
                 }
+            }
                 steps {
                     sh 'yum install docker -y'
                     sh 'it works'
