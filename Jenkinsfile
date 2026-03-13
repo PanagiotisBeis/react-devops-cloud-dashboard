@@ -35,11 +35,9 @@ pipeline {
                     reuseNode true
                 }
             }
-                steps {
-                    sh 'yum install docker -y'
-                    sh 'it works'
-
-                }
+            steps {
+                sh 'yum install docker -y'
+                sh 'it works'
             }
         }
     }
