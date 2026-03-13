@@ -5,7 +5,7 @@ pipeline {
         stage('Install dependencies') {
             agent {
                 docker{
-                    image: '25.8.1-alpine'
+                    image '25.8.1-alpine'
                     reuseNode true
                 }
             }
