@@ -2,9 +2,15 @@ pipeline {
     agent any
 
     stages {
-        stage('Build') {
+        stage('Install dependencies') {
+            agent {
+                docker{
+                    image: '25.8.1-alpine'
+                    reuseNode true
+                }
+            }
             steps {
-                echo 'Building..'
+                sh 'npm ci'
             }
         }
         stage('Test') {
