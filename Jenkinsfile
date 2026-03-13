@@ -28,7 +28,7 @@ pipeline {
             }
         }
 
-        stage('Create docker image') {
+        stage('Build and Push to ECR') {
             agent {
                 docker{
                     image 'amazon/aws-cli'
@@ -37,8 +37,7 @@ pipeline {
                 }
             }
             steps {
-                sh 'docker --version'
-                echo 'it works'
+               //todo
             }
         }
     }
