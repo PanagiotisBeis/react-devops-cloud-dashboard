@@ -37,7 +37,7 @@ pipeline {
                 }
             }
             steps {
-               //todo
+               echo 'push'
             }
         }
     }
