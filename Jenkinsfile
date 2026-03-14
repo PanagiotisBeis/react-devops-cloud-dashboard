@@ -6,9 +6,9 @@ pipeline {
         AWS_DEFAULT_REGION = 'eu-central-1'
         APP_NAME = 'react-devops-cloud-dashboard'
         AWS_DOCKER_REGISTRY = '002574138182.dkr.ecr.eu-central-1.amazonaws.com'
-        AWS_ECS_CLUSTER = ''
-        AWS_ECS_SERVICE_PROD = ''
-        AWS_ECS_TD_PROD  = ''
+        AWS_ECS_CLUSTER = 'react-devops-cloud-dashboard-cluster'
+        AWS_ECS_SERVICE_PROD = 'react-devops-cloud-dashboard-TaskDefinition-Prod-service-0j2nnxwy'
+        AWS_ECS_TD_PROD  = 'react-devops-cloud-dashboard-TaskDefinition-Prod'
         DOCKER_API_VERSION = '1.44'
     }
 
