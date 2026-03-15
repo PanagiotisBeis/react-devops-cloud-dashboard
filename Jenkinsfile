@@ -48,7 +48,7 @@ pipeline {
             }
         }
 
-        stage {'Deplo to AWS ECS'}
+        stage ('Deploy to AWS ECS')
         {
             docker{
                 image 'amazon/aws-cli'
