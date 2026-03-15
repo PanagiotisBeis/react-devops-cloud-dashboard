@@ -78,7 +78,6 @@ React Application
 
 ## Infrastructure Concepts
 
-* Container orchestration
 * Image registry management
 * CI/CD automation
 * Immutable deployments
