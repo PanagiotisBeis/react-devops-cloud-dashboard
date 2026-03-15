@@ -47,5 +47,26 @@ pipeline {
                 }               
             }
         }
+
+        stage {'Deplo to AWS ECS'}
+        {
+            docker{
+                image 'amazon/aws-cli'
+                reuseNode true
+                args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
+            }
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
+                    sh '''
+                        aws --version
+                        npm install jq
+                        sed -i "s/#APP_VERSION#/$REACT_APP_VERSION/g" aws/task-definition-prod.json
+                        LATEST_TD_REVISION=$(aws ecs register-task-definition --cli-input-json file://task-definition-prod.json | jq '.taskDefinition.revision')
+                        aws ecs update-service --cluster $AWS_ECS_CLUSTER --service $AWS_ECS_SERVICE_PROD --task-definition $AWS_ECS_TD_PROD:$LATEST_TD_REVISION
+                        aws ecs wait services-stable --cluster $AWS_ECS_CLUSTER --services $AWS_ECS_SERVICE_PROD
+                    '''
+                }
+            }        
+        }
     }
 }

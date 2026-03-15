@@ -6,7 +6,7 @@
     "containerDefinitions": [
         {
             "name": "react-devops-cloud-dashboard",
-            "image": "1.29.6-alpine",
+            "image": "002574138182.dkr.ecr.eu-central-1.amazonaws.com:#APP_VERSION#",
             "portMappings": [
                 {
                     "name": "ngnix-80-tcp",
