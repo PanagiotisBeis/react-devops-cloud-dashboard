@@ -50,10 +50,12 @@ pipeline {
 
         stage ('Deploy to AWS ECS')
         {
-            docker{
-                image 'amazon/aws-cli'
-                reuseNode true
-                args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
+            agent{
+                docker{
+                    image 'amazon/aws-cli'
+                    reuseNode true
+                    args "-u root -v /var/run/docker.sock:/var/run/docker.sock --entrypoint=''"
+                }
             }
             steps {
                 withCredentials([usernamePassword(credentialsId: 'my-aws', passwordVariable: 'AWS_SECRET_ACCESS_KEY', usernameVariable: 'AWS_ACCESS_KEY_ID')]) {
